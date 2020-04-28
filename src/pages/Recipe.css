@@ -1,0 +1,228 @@
+.bImg{
+
+  
+  height: 100%;
+  width: 100%;
+
+
+  position: fixed;
+  background-color: black;
+}
+
+.white{
+  height: 1600px;
+  width: 550px;
+  background-color: white;
+  z-index: 2;
+  position: fixed;
+  outline: 4px solid grey;
+
+}
+.imgLoc1{
+   
+  height: 50%;
+  width: 100%;
+  position: fixed;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+
+}
+
+
+
+.h3Loc1{
+    position: absolute;
+    top: 38%;
+    left: 43%;
+    z-index: 4;
+     
+  
+}
+
+.h3Loc2{
+    position: absolute;
+    top: 38%;
+    left: 50%;
+    z-index: 4;
+  
+}
+
+.h3Loc3{
+    position: absolute;
+    top: 35%;
+    left: 43%;
+    z-index: 4;
+  
+}
+
+.h3Loc4{
+    position: absolute;
+    top: 35%;
+    left: 50%;
+    z-index: 4;
+  
+}
+.h3Loc5{
+    position: absolute;
+    top: 45%;
+    left: 33%;
+    width: 530px;
+    z-index: 4;
+     font-size: 1.3em;
+  
+}
+
+.h3Loc6{
+    position: absolute;
+    top: 59%;
+    left: 33%;
+    width: 540px;
+    z-index: 4;
+    font-size: 1.3em;
+  
+}
+
+.h3Loc7{
+    position: absolute;
+    top: 75%;
+    left: 33%;
+    font-size: 1.2em;
+    width: 520px;
+    z-index: 4;
+  
+  
+}
+
+.h2Loc1{
+    position: absolute;
+    top: 41.5%;
+    left: 35%;
+    z-index: 4;
+  
+}
+
+.h2Loc2{
+    position: absolute;
+    top: 73%;
+    left: 35%;
+    z-index: 4;
+  
+}
+
+
+
+.wLocation{
+   position: absolute;
+    top: 20%;
+    left: 33%;
+}
+
+
+.font{
+   font-family: 'Shadows Into Light';
+}
+
+.h1Loc{
+    color: saddlebrown;
+    font-size: 2em;
+    font-weight: bold;
+    position: absolute;
+    text-decoration: underline;
+    text-align: center;
+    width: 500px;
+    top: 25%;
+    left: 34.5%;
+    z-index: 4;
+
+}
+.img1{
+
+    position: fixed;
+    top:40px;
+    left:0;
+    width: 40px;
+    height: 40px;
+  
+
+}
+
+
+@media screen and (max-width: 740px){
+
+ .white{
+  height: 2100px;
+  width: 300px;
+  position: absolute;
+  top: 35%;
+  left: 8%;
+
+}
+
+.h1Loc{
+
+    font-size: 1.3em;
+    width: 300px;
+    top: 40%;
+    left: 8%;
+}
+.h2Loc1{
+    top: 60%;
+    left: 15%;
+  
+}
+
+.h2Loc2{
+    top: 105%;
+    left: 10%;
+}
+
+.h3Loc1{
+   
+    top: 55%;
+    left: 23%;
+  
+}
+
+.h3Loc2{
+    top: 55%;
+    left: 55%;
+}
+
+.h3Loc3{
+  
+    top: 50%;
+    left: 23%;
+   
+  
+}
+
+.h3Loc4{
+   
+    top: 50%;
+    left: 55%;
+}
+.h3Loc5{
+    top: 65%;
+    left: 8%;
+    width: 300px;
+    font-size: 1em;
+  
+}
+
+.h3Loc6{
+    top: 90%;
+    left: -10%;
+    width: 300px;
+    font-size: 1em;
+}
+
+.h3Loc7{
+    top: 108%;
+    left: 15%;
+    width: 250px;
+    font-size: 1em;
+  
+}
+}
+

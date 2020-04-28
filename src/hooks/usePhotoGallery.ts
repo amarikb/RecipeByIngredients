@@ -1,128 +1,110 @@
-import { useState, useEffect } from "react";
+import { useState} from "react";
 import { useCamera } from '@ionic/react-hooks/camera';
-import { useFilesystem, base64FromPath } from '@ionic/react-hooks/filesystem';
-import { useStorage } from '@ionic/react-hooks/storage';
-import { isPlatform } from '@ionic/react';
-import { CameraResultType, CameraSource, CameraPhoto, Capacitor, FilesystemDirectory } from "@capacitor/core";
+import {base64FromPath } from '@ionic/react-hooks/filesystem';
+import { CameraResultType, CameraSource, CameraPhoto} from "@capacitor/core";
+import useLocalStorage from 'react-use-localstorage';
+import * as firebase from 'firebase';
 
-const PHOTO_STORAGE = "photos";
+
 export function usePhotoGallery() {
 
     const { getPhoto } = useCamera();
-    const { get, set } = useStorage();
-    const [photos, setPhotos] = useState<Photo[]>([]);
-    const { deleteFile, getUri, readFile, writeFile } = useFilesystem();
 
-    useEffect(() => {
-        
-        const loadSaved = async () => {
-            const photosString = await get('photos');
-            const photosInStorage = (photosString ? JSON.parse(photosString) : []) as Photo[];
-            // If running on the web...
-            if (!isPlatform('hybrid')) {
-              for (let photo of photosInStorage) {
-                const file = await readFile({
-                  path: photo.filepath,
-                  directory: FilesystemDirectory.Data
-                });
-                // Web platform only: Save the photo into the base64 field
-                photo.base64 = `data:image/jpeg;base64,${file.data}`;
-              }
-            }
-            setPhotos(photosInStorage);
-          };
-        loadSaved();
-      }, [get, readFile]);
+    let [count,setCount] = useLocalStorage('count','0');
+    const [message, setMessage] = useLocalStorage('message',"");
+    const [title, setTitles] = useLocalStorage('title',"");
+    let [recipe,setRecipes] = useState<any>();
+    var storage = firebase.storage();
+    var storageRef = storage.ref();
 
-      const takePhoto = async () => {
+    
+  
+
+      const takePhoto = async (thing: any) => {
             const cameraPhoto = await getPhoto({
               resultType: CameraResultType.Uri,
               source: CameraSource.Camera,
               quality: 100
             });
-          
-            const fileName = new Date().getTime() + '.jpeg';
-            const savedFileImage = await savePicture(cameraPhoto, fileName);
-            const newPhotos = [savedFileImage, ...photos];
-            setPhotos(newPhotos);
-
-            set(PHOTO_STORAGE,
-                isPlatform('hybrid')
-                  ? JSON.stringify(newPhotos)
-                  : JSON.stringify(newPhotos.map(p => {
-                    // Don't save the base64 representation of the photo data,
-                    // since it's already saved on the Filesystem
-                    const photoCopy = { ...p };
-                    delete photoCopy.base64;
-                    return photoCopy;
-                  })));
-            
+            savePicture(cameraPhoto,thing);
 
           };
-          const savePicture = async (photo: CameraPhoto, fileName: string) => {
-            let base64Data: string;
-            // "hybrid" will detect Cordova or Capacitor;
-            if (isPlatform('hybrid')) {
-              const file = await readFile({
-                path: photo.path!
-              });
-              base64Data = file.data;
-            } else {
-              base64Data = await base64FromPath(photo.webPath!);
-            }
-            await writeFile({
-              path: fileName,
-              data: base64Data,
-              directory: FilesystemDirectory.Data
-            });
-            return getPhotoFile(photo, fileName);
-          };
+          const savePicture = async (photo: CameraPhoto, thing: any) => {
 
-          const getPhotoFile = async (cameraPhoto: CameraPhoto, fileName: string): Promise<Photo> => {
-            if (isPlatform('hybrid')) {
-              // Get the new, complete filepath of the photo saved on filesystem
-              const fileUri = await getUri({
-                directory: FilesystemDirectory.Data,
-                path: fileName
-              });
-          
-              // Display the new image by rewriting the 'file://' path to HTTP
-              // Details: https://ionicframework.com/docs/core-concepts/webview#file-protocol
-              return {
-                filepath: fileUri.uri,
-                webviewPath: Capacitor.convertFileSrc(fileUri.uri),
-              };
-            }
-            else {
-              // Use webPath to display the new image instead of base64 since it's
-              // already loaded into memory
-              return {
-                filepath: fileName,
-                webviewPath: cameraPhoto.webPath
-              };
-            }
-          };
-          const deletePhoto = async (photo: Photo) => {
-            // Remove this photo from the Photos reference data array
-            const newPhotos = photos.filter(p => p.filepath !== photo.filepath);
-          
-            // Update photos array cache by overwriting the existing photo array
-            set(PHOTO_STORAGE, JSON.stringify(newPhotos));
-          
-            // delete photo file from filesystem
-            const filename = photo.filepath.substr(photo.filepath.lastIndexOf('/') + 1);
-            await deleteFile({
-              path: filename,
-              directory: FilesystemDirectory.Data
-            });
-            setPhotos(newPhotos);
-          };
 
+      firebase
+    .auth()
+    .onAuthStateChanged( async function(user){
+        var currentUser = user;
+        
+        var file = "/pictures/"+currentUser?.uid + count;
+       
+   
+    var savedRecipe = storageRef.child(file); 
+    var obj = thing.toString();
+    var path = await base64FromPath(photo.webPath!);
+    
+    if(obj === "true"){
+    savedRecipe.putString(JSON.stringify({photo: path, boolean: obj,title: getRecipe(), mess: getMess(), recipe: getRecipes()})).then(function(snapshot) {
+           console.log('Uploaded a raw string!');
+           localStorage.removeItem('title');
+           localStorage.removeItem('message');
+      }).catch(error => {
+               console.log(error);
+      });
+    
+
+  }
+
+  else{
+    savedRecipe.putString(JSON.stringify({photo: path, boolean: obj})).then(function(snapshot) {
+           console.log('Uploaded a raw string!');
+      }).catch(error => {
+               console.log(error);
+      });
+
+  }
+  });
+  
+    
+      count = count + 1;
+      setCount(count);
+      
+       };
+
+          const setRecipe= async (thing: any) => {
+              setTitles(thing);
+          }
+          const getRecipe = () =>{
+            return title;
+          }
+
+           const setRec= async (thing: any) => {
+              setRecipes(thing);
+          }
+          const getRecipes = () =>{
+            return recipe;
+          }
+
+          const setMess = async (thing: any) =>{
+              setMessage(thing);
+          }
+          const getMess = () =>{
+            return message;
+
+          }
   
     return {
-        deletePhoto,
-       photos,
-      takePhoto
+      takePhoto,
+      setRecipe,
+      getRecipe,
+      setMess,
+      getMess,
+      setRec,
+      getRecipes,
+      message,
+      title
+
     };
   }
 

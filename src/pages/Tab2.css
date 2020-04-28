@@ -1,3 +1,149 @@
-ion-content ion-toolbar {
+ion-content {
   --background: translucent;
+}
+ion-tab-bar, ion-tab-button{
+ background-color: black;
+}
+
+ion-button{
+  color: white;
+  font-family: 'Shadows Into Light';
+  font-size: 1.3em;
+}
+
+ion-button:hover{
+  color:  #e6b800;
+}
+
+.diets{
+   display: block;
+  font-size: 1.1em;
+}
+
+.location1{
+  
+  position: absolute;
+  top: 120%;
+  left: 65%;
+  transform: translate(-50%, -50%);
+  z-index: 3;
+  font-family: 'Shadows Into Light';
+ 
+  color: white;
+      
+}
+    
+
+.location2{
+  position: absolute;
+  top: 50%;
+  left: 60%;
+  font-family: 'Shadows Into Light';
+  font-size: 3.0em;
+  width: 900px;
+  transform: translate(-50%, -50%);
+  z-index: 3;
+  color:  white;
+
+}
+.search{
+      overflow-y:auto;
+      height: 100%;
+      width: 400px;
+      position: fixed;
+      z-index: 2;
+      top:0; 
+      left: 0;
+  
+}
+
+.searchStyle{
+      background-color: #0d0d0d;
+      font-family: 'Shadows Into Light';
+      color: whitesmoke;
+      text-align: center;
+}
+
+.searchStyle h1{
+  font-size: 3em;
+ 
+}
+
+.searchStyle h3{
+  font-size: 2em;
+}
+
+.home{
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  font-family: 'Shadows Into Light';
+  font-size: 3.3em;
+}
+
+.background{
+  background-color: #333333;
+}
+
+@media screen and (max-width: 740px){
+      .search{
+       width: 160px;
+       position: absolute;
+     }
+
+     .location1{
+  
+ 
+        top: 130%;
+        left: 105%;
+        width: 430px;
+    }
+
+  .width{
+    width: 150px;
+  }
+
+  .searchStyle h1{
+  font-size: 1em;
+  }
+
+  .home{
+  top: 65%;
+  left: 70%;
+  
+  font-size: 2.5em;
+}
+
+.location2{
+  top: 40%;
+  left: 75%;
+  font-size: 1.8em;
+  width: 150px;
+
+
+}
+
+  .searchStyle h3,h4{
+  font-size: 0.8em;
+  }
+
+  .h4{
+    font-size: 0.8em;
+  }
+
+  .ingredients{
+    font-size: 1.2em;
+    position: absolute;
+    top: 5%;
+    left: 45%;
+    transform: translate(-50%, -50%);
+  }
+
+  .diets{
+  font-size: .8em;
+}
+
+
 }

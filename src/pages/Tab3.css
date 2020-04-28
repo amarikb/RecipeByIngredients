@@ -1,3 +1,24 @@
 ion-content ion-toolbar {
   --background: translucent;
 }
+
+.backgroundImg4{
+  background-image: url("/assets/icon/recipe5.jpg");
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  z-index: 1;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  filter: blur(.9px);
+
+}
+.h1Title{
+  font-size: 3em;
+  position: absolute;
+  top: 53%;
+  left: 63%;
+  transform: translate(-50%, -50%);
+  font-family: 'Architects Daughter';
+}

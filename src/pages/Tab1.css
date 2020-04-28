@@ -1,3 +1,124 @@
 ion-content ion-toolbar {
   --background: translucent;
+  overflow-x: scroll;
+}
+
+ion-header{
+  background-color: #333333;
+
+}
+
+.theFont h2,h3,h1{
+  font-family: 'Architects Daughter';
+  text-align: center;
+   font-weight: bold;
+}
+
+.diffSize{
+    font-size: 2em;
+    color: black;
+    font-weight: bold;
+}
+
+.imgLoc{
+    margin-left: 675px;
+    margin-bottom: 0px;
+    width: 300px;
+    height: 300px;
+
+  }
+
+  .theFont h3{
+  text-shadow: 1px 1px black; 
+  font-size: 2em;
+}
+
+.logout{
+  position: absolute;
+  top: 10%;
+  left: 5%;
+  transform: translate(-50%, -50%);
+  }
+
+.theStyle{
+  font-size: 1.5em;
+}
+
+.yellow{
+   color: #e6b800;
+}
+
+.red{
+  color: red;
+}
+
+.diffColor{
+  color: #e6b800;
+  font-family: 'Architects Daughter';
+  font-size: 4em;
+
+  text-indent: 10px;
+  text-shadow: 1px 1px black;
+}
+
+.bgColor{
+   background-color:  #e6e6e6;
+  height: 100%;
+  width: 100%;
+  
+  overflow-x: hidden;
+  overflow-y: scroll;
+}
+
+@media screen and (max-width: 740px){
+  .size{
+    font-size: 0.8em;
+  }
+
+  .meal{
+  position: absolute;
+  top: 45%;
+  left: 83%;
+  transform: translate(-50%, -50%);
+  }
+
+  .theFont h3{
+  font-size: 1.5em;
+}
+
+.theStyle{
+  font-size: .9em;
+}
+.diffSize{
+    font-size: 1.5em;
+}
+
+
+  .logout{
+  position: absolute;
+  top: 36%;
+  left: 49.5%;
+  transform: translate(-50%, -50%);
+  }
+
+  .imgLoc{
+    margin-left: 50px;
+    margin-bottom: 15px;
+    width: 250px;
+    height: 250px;
+
+  }
+  .diffColor{
+  font-size: 2em;
+
+  }
+
+  .search2{
+  position: absolute;
+  top: 45%;
+  left: 45%;
+  transform: translate(-50%, -50%);
+
+  }
+ 
 }
