@@ -96,16 +96,17 @@ function changeCheckedIntolerance(num: number , isChecked: boolean,Intolerances:
       else{
         message = "";
         setMessage(message);
-        
+        console.log(evt1);
         let checkedDiet = Diets1.filter((theDiet: any) => {
-              return theDiet.isChecked = true;
+              return theDiet.isChecked == true;
         });
+        console.log(checkedDiet);
         let checkedResultDiet = checkedDiet.map((theDiet: any) => {
               return theDiet.val;
         });
 
         let checkedIntolerance = Intolerance.filter((theIntolerance: any) => {
-              return theIntolerance.isChecked = true;
+              return theIntolerance.isChecked == true;
         });
         let checkedResultIntolerance = checkedIntolerance.map((theIntolerance: any) => {
               return theIntolerance.val;
@@ -113,10 +114,12 @@ function changeCheckedIntolerance(num: number , isChecked: boolean,Intolerances:
 
         let requestString = "https://api.spoonacular.com/recipes/complexSearch?includeIngredients=";
            requestString = requestString + searchText;
+           console.log(requestString);
+           console.log(checkedResultDiet.length);
                   
 
-        if(checkedResultDiet.length === 0 && checkedResultIntolerance.length === 0){
-             
+        if(checkedResultDiet.length == 0 && checkedResultIntolerance.length == 0){
+             console.log("this is true");
              let result = await getIngredients(requestString)
                 .then(response => {
                    theResults = response;
@@ -124,11 +127,8 @@ function changeCheckedIntolerance(num: number , isChecked: boolean,Intolerances:
                    return response;
                 }
               )
+              console.log(result);
               setResults(result);
-            
-              
-         
-                    
         }
 
         else if(checkedResultDiet.length > 0 && checkedResultIntolerance.length === 0){
@@ -164,6 +164,8 @@ function changeCheckedIntolerance(num: number , isChecked: boolean,Intolerances:
               setResults(result);
              
         }
+
+        
         
       
         
@@ -173,7 +175,6 @@ function changeCheckedIntolerance(num: number , isChecked: boolean,Intolerances:
   }
 
   function getResults(result: any){
-      console.log(result);
      if(message === ''){
       return <div className="location1" style={{fontFamily: "Shadows Into Light"}}>
          <IonGrid>
@@ -279,7 +280,7 @@ function changeCheckedIntolerance(num: number , isChecked: boolean,Intolerances:
           ))}
           <br/>
 
-           <IonButton shape="round"  onClick={() => handleSearch(searchText,Diets,Intolerances)} >Search</IonButton>
+           <IonButton shape="round"  onClick={() => {handleSearch(searchText,Diets,Intolerances)}} >Search</IonButton>
         
                 <IonAlert
           isOpen={showAlert1}
