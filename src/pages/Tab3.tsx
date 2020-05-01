@@ -19,7 +19,7 @@ const Tab3: React.FC = () => {
   var storageRef = storage.ref();
   let [save,setRecipes] = useState<any>('');
  const history = useHistory();
- const {takePhoto,title,message } = usePhotoGallery();
+ const {takePhoto} = usePhotoGallery();
   const [showAlert1, setShowAlert1] = useState(false);
 
  
