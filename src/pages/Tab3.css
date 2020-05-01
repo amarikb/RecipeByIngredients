@@ -18,7 +18,14 @@ ion-content ion-toolbar {
   font-size: 3em;
   position: absolute;
   top: 53%;
-  left: 63%;
+  left: 68%;
   transform: translate(-50%, -50%);
+  font-family: 'Architects Daughter';
+}
+
+.content{
+  font-size: 2em;
+  color: red;
+  padding-bottom: 70px;
   font-family: 'Architects Daughter';
 }

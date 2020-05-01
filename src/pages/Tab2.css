@@ -23,7 +23,7 @@ ion-button:hover{
 .location1{
   
   position: absolute;
-  top: 120%;
+  top: 140%;
   left: 65%;
   transform: translate(-50%, -50%);
   z-index: 3;

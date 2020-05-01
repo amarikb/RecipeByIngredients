@@ -110,7 +110,6 @@ return <div>
        
       {thing.map((photo:any, index: any) => (
         <IonCol size="2" key={index}>
-          {console.log(photo.recipe)}
       
 
           <IonCard style={{outline: "4px solid #e6b800", zIndex: "4"}}>
@@ -123,7 +122,7 @@ return <div>
       <IonCardTitle style={{fontWeight: "bold"}}>{photo.boolean === "true" ?  photo.title : "recipe"} <br/></IonCardTitle>
         </IonCardHeader>
         <br/>
-       <IonCardContent style={{fontStyle: "7em"}}>{photo.boolean === "true" ? photo.mess : "grrr..."} </IonCardContent> 
+       <IonCardContent className="content">{photo.boolean === "true" ? photo.mess : "grrr..."} </IonCardContent> 
       {photo.boolean === "true" ?
         <IonTabs>
           <IonRouterOutlet></IonRouterOutlet>
@@ -168,8 +167,6 @@ return <div>
       </IonHeader>
       <IonContent>
         <IonContent>
-  {console.log(title)}
-  {console.log(message)}
    <div className="backgroundImg4"> </div>
    
  <div>{save ? displaySaved(save) : null}</div>

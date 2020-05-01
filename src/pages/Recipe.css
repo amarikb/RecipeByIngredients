@@ -125,14 +125,14 @@
 
 .h1Loc{
     color: saddlebrown;
-    font-size: 2em;
+    font-size: 1.6em;
     font-weight: bold;
     position: absolute;
     text-decoration: underline;
     text-align: center;
-    width: 500px;
+    width: 550px;
     top: 25%;
-    left: 34.5%;
+    left: 33%;
     z-index: 4;
 
 }

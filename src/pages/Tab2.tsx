@@ -116,7 +116,7 @@ function changeCheckedIntolerance(num: number , isChecked: boolean,Intolerances:
           
                   
 
-        if(checkedResultDiet.length == 0 && checkedResultIntolerance.length == 0){
+        if(checkedResultDiet.length === 0 && checkedResultIntolerance.length === 0){
              let result = await getIngredients(requestString)
                 .then(response => {
                    theResults = response;

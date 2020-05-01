@@ -10,7 +10,6 @@ export function useFirebase() {
         // Sign-out successful.
        
              console.log("logout successful ");
-             localStorage.clear();
               window.location.href = '/';
 
          
